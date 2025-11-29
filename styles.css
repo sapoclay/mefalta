@@ -1,0 +1,850 @@
+:root {
+    /* Paleta de Colores */
+    --gradiente-primario: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradiente-secundario: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradiente-exito: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradiente-acento: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+
+    --fondo-oscuro: #0f0c29;
+    --fondo-oscuro-secundario: #1a1637;
+    --fondo-oscuro-terciario: #24204a;
+
+    --texto-primario: #ffffff;
+    --texto-secundario: #b8b4d4;
+    --texto-apagado: #8a86a8;
+
+    --cristal-fondo: rgba(255, 255, 255, 0.08);
+    --cristal-borde: rgba(255, 255, 255, 0.15);
+
+    --sombra-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --sombra-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --sombra-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --sombra-brillo: 0 0 20px rgba(102, 126, 234, 0.3);
+
+    /* Tipografía */
+    --fuente-primaria: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --fuente-digital: 'Orbitron', monospace;
+
+    /* Transiciones */
+    --transicion-rapida: 0.2s ease;
+    --transicion-normal: 0.3s ease;
+    --transicion-lenta: 0.5s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-primaria);
+    background: var(--fondo-oscuro);
+    color: var(--texto-primario);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fondo de Estrellas Animadas */
+.estrellas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.estrellas::before,
+.estrellas::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow:
+        100px 100px white, 200px 150px white, 300px 80px white,
+        400px 200px white, 500px 120px white, 600px 180px white,
+        700px 90px white, 800px 160px white, 900px 110px white,
+        1000px 190px white, 1100px 140px white, 1200px 100px white,
+        150px 250px white, 250px 200px white, 350px 280px white,
+        450px 220px white, 550px 260px white, 650px 240px white,
+        750px 290px white, 850px 270px white, 950px 230px white;
+    animation: centelleo 3s linear infinite;
+}
+
+.estrellas::after {
+    animation-delay: 1.5s;
+}
+
+@keyframes centelleo {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.contenedor {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Encabezado */
+.encabezado {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: aparecerAbajo 0.8s ease;
+}
+
+.titulo {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    background: var(--gradiente-primario);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.icono-titulo {
+    font-size: 1.2em;
+    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+    animation: pulso 2s ease-in-out infinite;
+}
+
+.subtitulo-titulo {
+    display: block;
+    font-size: 0.4em;
+    font-weight: 500;
+    background: var(--gradiente-acento);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0.5rem;
+}
+
+/* Contenido Principal */
+.contenido-principal {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+/* Estilos de Tarjetas */
+.tarjeta {
+    background: var(--cristal-fondo);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--cristal-borde);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: var(--sombra-lg);
+    transition: transform var(--transicion-normal), box-shadow var(--transicion-normal);
+    animation: aparecerArriba 0.8s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-lg), var(--sombra-brillo);
+}
+
+.titulo-tarjeta {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.icono {
+    font-size: 1.5em;
+    filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.4));
+}
+
+.descripcion-tarjeta {
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Inputs de Fecha */
+.inputs-fecha {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.grupo-input label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--texto-secundario);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-fecha {
+    background: var(--fondo-oscuro-terciario);
+    border: 2px solid var(--cristal-borde);
+    border-radius: 12px;
+    padding: 1rem;
+    color: var(--texto-primario);
+    font-family: var(--fuente-primaria);
+    font-size: 1rem;
+    transition: all var(--transicion-normal);
+    outline: none;
+}
+
+.input-fecha:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+}
+
+.input-fecha::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+/* Botones */
+.grupo-botones {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.boton {
+    background: var(--gradiente-primario);
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    color: white;
+    font-family: var(--fuente-primaria);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all var(--transicion-normal);
+    box-shadow: var(--sombra-md);
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    min-width: 200px;
+}
+
+.boton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.boton:hover::before {
+    left: 100%;
+}
+
+.boton:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-lg), 0 0 20px rgba(102, 126, 234, 0.4);
+}
+
+.boton:active {
+    transform: translateY(0);
+}
+
+.boton-primario {
+    width: 100%;
+}
+
+.boton-secundario {
+    background: var(--gradiente-secundario);
+    padding: 0.875rem 1.5rem;
+}
+
+.boton-peligro {
+    background: linear-gradient(135deg, #f5576c 0%, #c92a3a 100%);
+}
+
+.boton-peligro:hover {
+    box-shadow: var(--sombra-lg), 0 0 20px rgba(245, 87, 108, 0.4);
+}
+
+.icono-boton {
+    font-size: 1.2em;
+}
+
+/* Visor del Reloj */
+.tarjeta-reloj {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+    border: 2px solid var(--cristal-borde);
+}
+
+.visor-reloj {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensaje-reloj {
+    text-align: center;
+}
+
+.icono-reloj {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+    animation: balanceo 2s ease-in-out infinite;
+}
+
+.mensaje-reloj p {
+    color: var(--texto-secundario);
+    font-size: 1.2rem;
+}
+
+.unidades-reloj {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+}
+
+.unidad-tiempo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.valor-tiempo {
+    font-family: var(--fuente-digital);
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    background: var(--gradiente-exito);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
+    min-width: 2ch;
+    text-align: center;
+    animation: pulsoDigital 2s ease-in-out infinite;
+}
+
+.etiqueta-tiempo {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--texto-apagado);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.separador-tiempo {
+    font-family: var(--fuente-digital);
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    color: var(--texto-apagado);
+    animation: parpadeo 1s step-end infinite;
+}
+
+.info-reloj {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--cristal-borde);
+}
+
+.elemento-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.etiqueta-info {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--texto-apagado);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.valor-info {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--gradiente-acento);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Sección de Exclusión */
+.grupo-input-exclusion {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.grupo-input-exclusion .input-fecha {
+    flex: 1;
+    min-width: 200px;
+}
+
+.lista-excluidos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.mensaje-vacio {
+    color: var(--texto-apagado);
+    font-style: italic;
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.elemento-excluido {
+    background: var(--fondo-oscuro-terciario);
+    border: 1px solid var(--cristal-borde);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all var(--transicion-rapida);
+    animation: deslizarEntrada 0.3s ease;
+}
+
+.elemento-excluido:hover {
+    background: var(--fondo-oscuro-secundario);
+    transform: translateX(4px);
+}
+
+.fecha-excluida {
+    font-weight: 600;
+    color: var(--texto-primario);
+}
+
+.boton-eliminar {
+    background: none;
+    border: none;
+    color: var(--texto-apagado);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all var(--transicion-rapida);
+    padding: 0.25rem;
+    line-height: 1;
+}
+
+.boton-eliminar:hover {
+    color: #f5576c;
+    transform: scale(1.2);
+}
+
+/* Cuadrícula de Festivos */
+.cuadricula-festivos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.elemento-festivo {
+    background: var(--fondo-oscuro-terciario);
+    border: 1px solid var(--cristal-borde);
+    border-radius: 12px;
+    padding: 1rem;
+    transition: all var(--transicion-normal);
+}
+
+.elemento-festivo:hover {
+    background: var(--fondo-oscuro-secundario);
+    border-color: #667eea;
+    transform: translateX(4px);
+}
+
+.nombre-festivo {
+    font-weight: 600;
+    color: var(--texto-primario);
+    margin-bottom: 0.25rem;
+}
+
+.fecha-festivo {
+    font-size: 0.85rem;
+    color: var(--texto-secundario);
+}
+
+/* Estilos del Calendario */
+.contenedor-calendario {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--cristal-borde);
+}
+
+.titulo-calendario {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--texto-primario);
+}
+
+.leyenda-calendario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--fondo-oscuro-terciario);
+    border-radius: 12px;
+}
+
+.elemento-leyenda {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.color-leyenda {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid var(--cristal-borde);
+}
+
+.color-leyenda.dia-laborable {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    box-shadow: 0 0 10px rgba(67, 233, 123, 0.3);
+}
+
+.color-leyenda.fin-semana {
+    background: var(--fondo-oscuro-secundario);
+}
+
+.color-leyenda.festivo {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    box-shadow: 0 0 10px rgba(240, 147, 251, 0.3);
+}
+
+.color-leyenda.excluido {
+    background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+}
+
+.texto-leyenda {
+    font-size: 0.9rem;
+    color: var(--texto-secundario);
+    font-weight: 500;
+}
+
+.cuadricula-calendario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    max-width: 900px;
+}
+
+.mes-calendario {
+    background: var(--fondo-oscuro-terciario);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid var(--cristal-borde);
+}
+
+.titulo-mes-calendario {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--texto-primario);
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.dias-semana-calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.dia-semana-calendario {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--texto-apagado);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.25rem 0;
+}
+
+.dias-calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+}
+
+.dia-calendario {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    position: relative;
+    transition: all var(--transicion-rapida);
+    border: 2px solid transparent;
+}
+
+.dia-calendario.vacio {
+    visibility: hidden;
+}
+
+.dia-calendario.dia-laborable {
+    background: linear-gradient(135deg, rgba(67, 233, 123, 0.2) 0%, rgba(56, 249, 215, 0.2) 100%);
+    color: #43e97b;
+    border-color: rgba(67, 233, 123, 0.3);
+}
+
+.dia-calendario.dia-laborable:hover {
+    background: linear-gradient(135deg, rgba(67, 233, 123, 0.3) 0%, rgba(56, 249, 215, 0.3) 100%);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(67, 233, 123, 0.4);
+}
+
+.dia-calendario.fin-semana {
+    background: var(--fondo-oscuro-secundario);
+    color: var(--texto-apagado);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dia-calendario.festivo {
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.2) 0%, rgba(245, 87, 108, 0.2) 100%);
+    color: #f093fb;
+    border-color: rgba(240, 147, 251, 0.3);
+}
+
+.dia-calendario.festivo:hover {
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.3) 0%, rgba(245, 87, 108, 0.3) 100%);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(240, 147, 251, 0.4);
+}
+
+.dia-calendario.excluido {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.2) 0%, rgba(201, 42, 42, 0.2) 100%);
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.3);
+}
+
+.dia-calendario.excluido:hover {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.3) 0%, rgba(201, 42, 42, 0.3) 100%);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.4);
+}
+
+.dia-calendario.dia-inicio,
+.dia-calendario.dia-fin {
+    border: 3px solid #667eea !important;
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+    font-weight: 800;
+    position: relative;
+}
+
+.dia-calendario.dia-inicio::before,
+.dia-calendario.dia-fin::before {
+    content: '📍';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 0.9rem;
+}
+
+.dia-calendario.fuera-rango {
+    opacity: 0.3;
+    color: var(--texto-apagado);
+}
+
+/* Animaciones */
+@keyframes aparecerAbajo {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes aparecerArriba {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulso {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes balanceo {
+
+    0%,
+    100% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes parpadeo {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes pulsoDigital {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes deslizarEntrada {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Diseño Responsivo */
+@media (max-width: 768px) {
+    .contenedor {
+        padding: 1rem;
+    }
+
+    .tarjeta {
+        padding: 1.5rem;
+    }
+
+    .unidades-reloj {
+        gap: 0.5rem;
+    }
+
+    .separador-tiempo {
+        display: none;
+    }
+
+    .inputs-fecha {
+        grid-template-columns: 1fr;
+    }
+
+    .grupo-input-exclusion {
+        flex-direction: column;
+    }
+
+    .grupo-input-exclusion .input-fecha {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo {
+        font-size: 1.75rem;
+    }
+
+    .valor-tiempo {
+        font-size: 2.5rem;
+    }
+
+    .cuadricula-festivos {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Pie de Página */
+.pie-pagina {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem;
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--cristal-borde);
+    background: var(--cristal-fondo);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+}
+
+.autor {
+    font-weight: 700;
+    background: var(--gradiente-primario);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

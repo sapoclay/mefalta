@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeFalta - Contador de Tiempo Laboral</title>
+    <meta name="description"
+        content="Reloj digital que cuenta el tiempo entre dos fechas excluyendo fines de semana, festivos y días personalizados">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="estrellas"></div>
+    <div class="contenedor">
+        <header class="encabezado">
+            <h1 class="titulo">
+                <span class="icono-titulo">⏱️</span>
+                MeFalta
+                <span class="subtitulo-titulo">... todo esto</span>
+            </h1>
+        </header>
+
+        <main class="contenido-principal">
+            <!-- Configuración de Fechas -->
+            <section class="tarjeta tarjeta-config">
+                <h2 class="titulo-tarjeta">
+                    <span class="icono">📅</span>
+                    Configuración de fechas
+                </h2>
+                <div class="inputs-fecha">
+                    <div class="grupo-input">
+                        <label for="startDate">Fecha de inicio</label>
+                        <input type="datetime-local" id="startDate" class="input-fecha">
+                    </div>
+                    <div class="grupo-input">
+                        <label for="endDate">Fecha de fin</label>
+                        <input type="datetime-local" id="endDate" class="input-fecha">
+                    </div>
+                </div>
+                <div class="grupo-botones">
+                    <button id="startCountdown" class="boton boton-primario">
+                        <span class="icono-boton">🚀</span>
+                        Iniciar cuenta regresiva
+                    </button>
+                    <button id="stopCountdown" class="boton boton-peligro" style="display: none;">
+                        <span class="icono-boton">⏹️</span>
+                        Detener cuenta
+                    </button>
+                    <button id="clearData" class="boton boton-secundario" onclick="limpiarDatosGuardados()">
+                        <span class="icono-boton">🗑️</span>
+                        Limpiar datos
+                    </button>
+                </div>
+            </section>
+
+            <!-- Reloj Digital -->
+            <section class="tarjeta tarjeta-reloj">
+                <div class="visor-reloj" id="clockDisplay">
+                    <div class="mensaje-reloj">
+                        <span class="icono-reloj">⏰</span>
+                        <p>Configura las fechas para comenzar</p>
+                    </div>
+                </div>
+                <div class="unidades-reloj" id="clockUnits" style="display: none;">
+                    <div class="unidad-tiempo">
+                        <div class="valor-tiempo" id="days">00</div>
+                        <div class="etiqueta-tiempo">Días</div>
+                    </div>
+                    <div class="separador-tiempo">:</div>
+                    <div class="unidad-tiempo">
+                        <div class="valor-tiempo" id="hours">00</div>
+                        <div class="etiqueta-tiempo">Horas</div>
+                    </div>
+                    <div class="separador-tiempo">:</div>
+                    <div class="unidad-tiempo">
+                        <div class="valor-tiempo" id="minutes">00</div>
+                        <div class="etiqueta-tiempo">Minutos</div>
+                    </div>
+                    <div class="separador-tiempo">:</div>
+                    <div class="unidad-tiempo">
+                        <div class="valor-tiempo" id="seconds">00</div>
+                        <div class="etiqueta-tiempo">Segundos</div>
+                    </div>
+                </div>
+                <div class="info-reloj" id="clockInfo">
+                    <div class="elemento-info">
+                        <span class="etiqueta-info">Días del curso:</span>
+                        <span class="valor-info" id="workDays">0</span>
+                    </div>
+                    <div class="elemento-info">
+                        <span class="etiqueta-info">Total horas del curso:</span>
+                        <span class="valor-info" id="totalHours">0</span>
+                    </div>
+                </div>
+
+                <!-- Calendario Visual -->
+                <div class="contenedor-calendario" id="calendarContainer" style="display: none;">
+                    <h3 class="titulo-calendario">
+                        <span class="icono">📅</span>
+                        Calendario de días del curso
+                        <span class="icono">📅</span>
+                    </h3>
+                    <div class="leyenda-calendario">
+                        <div class="elemento-leyenda">
+                            <span class="color-leyenda dia-laborable"></span>
+                            <span class="texto-leyenda">Día curso</span>
+                        </div>
+                        <div class="elemento-leyenda">
+                            <span class="color-leyenda fin-semana"></span>
+                            <span class="texto-leyenda">Fin de semana</span>
+                        </div>
+                        <div class="elemento-leyenda">
+                            <span class="color-leyenda festivo"></span>
+                            <span class="texto-leyenda">Festivo</span>
+                        </div>
+                        <div class="elemento-leyenda">
+                            <span class="color-leyenda excluido"></span>
+                            <span class="texto-leyenda">Excluido</span>
+                        </div>
+                    </div>
+                    <div id="calendarGrid"></div>
+                </div>
+            </section>
+
+            <!-- Festivos Españoles -->
+            <section class="tarjeta tarjeta-festivos">
+                <h2 class="titulo-tarjeta">
+                    <span class="icono">🎉</span>
+                    Festivos españoles incluidos
+                    <span class="icono">🎉</span>
+                </h2>
+                <div class="cuadricula-festivos" id="holidaysList"></div>
+            </section>
+        </main>
+
+        <footer class="pie-pagina">
+            <p>Creado por <span class="autor">entreunosyceros</span></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
