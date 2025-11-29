@@ -1,34 +1,34 @@
 :root {
-    /* Paleta de Colores */
-    --gradiente-primario: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradiente-secundario: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradiente-exito: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --gradiente-acento: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    /* Color Palette */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-accent: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
 
-    --fondo-oscuro: #0f0c29;
-    --fondo-oscuro-secundario: #1a1637;
-    --fondo-oscuro-terciario: #24204a;
+    --bg-dark: #0f0c29;
+    --bg-dark-secondary: #1a1637;
+    --bg-dark-tertiary: #24204a;
 
-    --texto-primario: #ffffff;
-    --texto-secundario: #b8b4d4;
-    --texto-apagado: #8a86a8;
+    --text-primary: #ffffff;
+    --text-secondary: #b8b4d4;
+    --text-muted: #8a86a8;
 
-    --cristal-fondo: rgba(255, 255, 255, 0.08);
-    --cristal-borde: rgba(255, 255, 255, 0.15);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
 
-    --sombra-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-    --sombra-md: 0 4px 16px rgba(0, 0, 0, 0.3);
-    --sombra-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
-    --sombra-brillo: 0 0 20px rgba(102, 126, 234, 0.3);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
 
-    /* Tipografía */
-    --fuente-primaria: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --fuente-digital: 'Orbitron', monospace;
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-digital: 'Orbitron', monospace;
 
-    /* Transiciones */
-    --transicion-rapida: 0.2s ease;
-    --transicion-normal: 0.3s ease;
-    --transicion-lenta: 0.5s ease;
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
 }
 
 * {
@@ -38,15 +38,15 @@
 }
 
 body {
-    font-family: var(--fuente-primaria);
-    background: var(--fondo-oscuro);
-    color: var(--texto-primario);
+    font-family: var(--font-primary);
+    background: var(--bg-dark);
+    color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
 }
 
-/* Fondo de Estrellas Animadas */
+/* Animated Stars Background */
 .estrellas {
     position: fixed;
     top: 0;
@@ -99,7 +99,7 @@ body {
     z-index: 1;
 }
 
-/* Encabezado */
+/* Header */
 .encabezado {
     text-align: center;
     margin-bottom: 3rem;
@@ -109,7 +109,7 @@ body {
 .titulo {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
-    background: var(--gradiente-primario);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -131,35 +131,35 @@ body {
     display: block;
     font-size: 0.4em;
     font-weight: 500;
-    background: var(--gradiente-acento);
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-top: 0.5rem;
 }
 
-/* Contenido Principal */
+/* Main Content */
 .contenido-principal {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
 }
 
-/* Estilos de Tarjetas */
+/* Card Styles */
 .tarjeta {
-    background: var(--cristal-fondo);
+    background: var(--glass-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--cristal-borde);
+    border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 2rem;
-    box-shadow: var(--sombra-lg);
-    transition: transform var(--transicion-normal), box-shadow var(--transicion-normal);
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
     animation: aparecerArriba 0.8s ease;
 }
 
 .tarjeta:hover {
     transform: translateY(-4px);
-    box-shadow: var(--sombra-lg), var(--sombra-brillo);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
 .titulo-tarjeta {
@@ -177,13 +177,13 @@ body {
 }
 
 .descripcion-tarjeta {
-    color: var(--texto-secundario);
+    color: var(--text-secondary);
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
     line-height: 1.6;
 }
 
-/* Inputs de Fecha */
+/* Date Inputs */
 .inputs-fecha {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -200,20 +200,20 @@ body {
 .grupo-input label {
     font-weight: 600;
     font-size: 0.9rem;
-    color: var(--texto-secundario);
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .input-fecha {
-    background: var(--fondo-oscuro-terciario);
-    border: 2px solid var(--cristal-borde);
+    background: var(--bg-dark-tertiary);
+    border: 2px solid var(--glass-border);
     border-radius: 12px;
     padding: 1rem;
-    color: var(--texto-primario);
-    font-family: var(--fuente-primaria);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
     font-size: 1rem;
-    transition: all var(--transicion-normal);
+    transition: all var(--transition-normal);
     outline: none;
 }
 
@@ -227,7 +227,7 @@ body {
     cursor: pointer;
 }
 
-/* Botones */
+/* Buttons */
 .grupo-botones {
     display: flex;
     gap: 1rem;
@@ -235,12 +235,12 @@ body {
 }
 
 .boton {
-    background: var(--gradiente-primario);
+    background: var(--gradient-primary);
     border: none;
     border-radius: 12px;
     padding: 1rem 2rem;
     color: white;
-    font-family: var(--fuente-primaria);
+    font-family: var(--font-primary);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -248,8 +248,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    transition: all var(--transicion-normal);
-    box-shadow: var(--sombra-md);
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
     flex: 1;
@@ -273,7 +273,7 @@ body {
 
 .boton:hover {
     transform: translateY(-2px);
-    box-shadow: var(--sombra-lg), 0 0 20px rgba(102, 126, 234, 0.4);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(102, 126, 234, 0.4);
 }
 
 .boton:active {
@@ -285,7 +285,7 @@ body {
 }
 
 .boton-secundario {
-    background: var(--gradiente-secundario);
+    background: var(--gradient-secondary);
     padding: 0.875rem 1.5rem;
 }
 
@@ -294,17 +294,17 @@ body {
 }
 
 .boton-peligro:hover {
-    box-shadow: var(--sombra-lg), 0 0 20px rgba(245, 87, 108, 0.4);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(245, 87, 108, 0.4);
 }
 
 .icono-boton {
     font-size: 1.2em;
 }
 
-/* Visor del Reloj */
+/* Clock Display */
 .tarjeta-reloj {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
-    border: 2px solid var(--cristal-borde);
+    border: 2px solid var(--glass-border);
 }
 
 .visor-reloj {
@@ -326,7 +326,7 @@ body {
 }
 
 .mensaje-reloj p {
-    color: var(--texto-secundario);
+    color: var(--text-secondary);
     font-size: 1.2rem;
 }
 
@@ -347,10 +347,10 @@ body {
 }
 
 .valor-tiempo {
-    font-family: var(--fuente-digital);
+    font-family: var(--font-digital);
     font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 700;
-    background: var(--gradiente-exito);
+    background: var(--gradient-success);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -363,16 +363,16 @@ body {
 .etiqueta-tiempo {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--texto-apagado);
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .separador-tiempo {
-    font-family: var(--fuente-digital);
+    font-family: var(--font-digital);
     font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 700;
-    color: var(--texto-apagado);
+    color: var(--text-muted);
     animation: parpadeo 1s step-end infinite;
 }
 
@@ -382,7 +382,7 @@ body {
     gap: 1.5rem;
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--cristal-borde);
+    border-top: 1px solid var(--glass-border);
 }
 
 .elemento-info {
@@ -394,7 +394,7 @@ body {
 .etiqueta-info {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--texto-apagado);
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -402,13 +402,13 @@ body {
 .valor-info {
     font-size: 1.5rem;
     font-weight: 700;
-    background: var(--gradiente-acento);
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* Sección de Exclusión */
+/* Exclusion Section */
 .grupo-input-exclusion {
     display: flex;
     gap: 1rem;
@@ -428,7 +428,7 @@ body {
 }
 
 .mensaje-vacio {
-    color: var(--texto-apagado);
+    color: var(--text-muted);
     font-style: italic;
     padding: 2rem;
     text-align: center;
@@ -436,34 +436,34 @@ body {
 }
 
 .elemento-excluido {
-    background: var(--fondo-oscuro-terciario);
-    border: 1px solid var(--cristal-borde);
+    background: var(--bg-dark-tertiary);
+    border: 1px solid var(--glass-border);
     border-radius: 8px;
     padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    transition: all var(--transicion-rapida);
+    transition: all var(--transition-fast);
     animation: deslizarEntrada 0.3s ease;
 }
 
 .elemento-excluido:hover {
-    background: var(--fondo-oscuro-secundario);
+    background: var(--bg-dark-secondary);
     transform: translateX(4px);
 }
 
 .fecha-excluida {
     font-weight: 600;
-    color: var(--texto-primario);
+    color: var(--text-primary);
 }
 
 .boton-eliminar {
     background: none;
     border: none;
-    color: var(--texto-apagado);
+    color: var(--text-muted);
     font-size: 1.2rem;
     cursor: pointer;
-    transition: all var(--transicion-rapida);
+    transition: all var(--transition-fast);
     padding: 0.25rem;
     line-height: 1;
 }
@@ -473,7 +473,7 @@ body {
     transform: scale(1.2);
 }
 
-/* Cuadrícula de Festivos */
+/* Holidays Grid */
 .cuadricula-festivos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -481,35 +481,35 @@ body {
 }
 
 .elemento-festivo {
-    background: var(--fondo-oscuro-terciario);
-    border: 1px solid var(--cristal-borde);
+    background: var(--bg-dark-tertiary);
+    border: 1px solid var(--glass-border);
     border-radius: 12px;
     padding: 1rem;
-    transition: all var(--transicion-normal);
+    transition: all var(--transition-normal);
 }
 
 .elemento-festivo:hover {
-    background: var(--fondo-oscuro-secundario);
+    background: var(--bg-dark-secondary);
     border-color: #667eea;
     transform: translateX(4px);
 }
 
 .nombre-festivo {
     font-weight: 600;
-    color: var(--texto-primario);
+    color: var(--text-primary);
     margin-bottom: 0.25rem;
 }
 
 .fecha-festivo {
     font-size: 0.85rem;
-    color: var(--texto-secundario);
+    color: var(--text-secondary);
 }
 
-/* Estilos del Calendario */
+/* Calendar Styles */
 .contenedor-calendario {
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--cristal-borde);
+    border-top: 1px solid var(--glass-border);
 }
 
 .titulo-calendario {
@@ -519,7 +519,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: var(--texto-primario);
+    color: var(--text-primary);
 }
 
 .leyenda-calendario {
@@ -528,7 +528,7 @@ body {
     gap: 1.5rem;
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background: var(--fondo-oscuro-terciario);
+    background: var(--bg-dark-tertiary);
     border-radius: 12px;
 }
 
@@ -542,7 +542,7 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 4px;
-    border: 1px solid var(--cristal-borde);
+    border: 1px solid var(--glass-border);
 }
 
 .color-leyenda.dia-laborable {
@@ -551,7 +551,7 @@ body {
 }
 
 .color-leyenda.fin-semana {
-    background: var(--fondo-oscuro-secundario);
+    background: var(--bg-dark-secondary);
 }
 
 .color-leyenda.festivo {
@@ -566,7 +566,7 @@ body {
 
 .texto-leyenda {
     font-size: 0.9rem;
-    color: var(--texto-secundario);
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
@@ -578,17 +578,17 @@ body {
 }
 
 .mes-calendario {
-    background: var(--fondo-oscuro-terciario);
+    background: var(--bg-dark-tertiary);
     border-radius: 12px;
     padding: 1rem;
-    border: 1px solid var(--cristal-borde);
+    border: 1px solid var(--glass-border);
 }
 
 .titulo-mes-calendario {
     font-size: 1rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
-    color: var(--texto-primario);
+    color: var(--text-primary);
     text-align: center;
     text-transform: capitalize;
 }
@@ -604,7 +604,7 @@ body {
     text-align: center;
     font-size: 0.7rem;
     font-weight: 700;
-    color: var(--texto-apagado);
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 0.25rem 0;
@@ -625,7 +625,7 @@ body {
     font-size: 0.8rem;
     font-weight: 600;
     position: relative;
-    transition: all var(--transicion-rapida);
+    transition: all var(--transition-fast);
     border: 2px solid transparent;
 }
 
@@ -646,8 +646,8 @@ body {
 }
 
 .dia-calendario.fin-semana {
-    background: var(--fondo-oscuro-secundario);
-    color: var(--texto-apagado);
+    background: var(--bg-dark-secondary);
+    color: var(--text-muted);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -694,10 +694,10 @@ body {
 
 .dia-calendario.fuera-rango {
     opacity: 0.3;
-    color: var(--texto-apagado);
+    color: var(--text-muted);
 }
 
-/* Animaciones */
+/* Animations */
 @keyframes aparecerAbajo {
     from {
         opacity: 0;
@@ -783,7 +783,7 @@ body {
     }
 }
 
-/* Diseño Responsivo */
+/* Responsive Design */
 @media (max-width: 768px) {
     .contenedor {
         padding: 1rem;
@@ -828,22 +828,22 @@ body {
     }
 }
 
-/* Pie de Página */
+/* Footer */
 .pie-pagina {
     text-align: center;
     margin-top: 3rem;
     padding: 1.5rem;
-    color: var(--texto-secundario);
+    color: var(--text-secondary);
     font-size: 0.9rem;
-    border-top: 1px solid var(--cristal-borde);
-    background: var(--cristal-fondo);
+    border-top: 1px solid var(--glass-border);
+    background: var(--glass-bg);
     backdrop-filter: blur(10px);
     border-radius: 12px;
 }
 
 .autor {
     font-weight: 700;
-    background: var(--gradiente-primario);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
