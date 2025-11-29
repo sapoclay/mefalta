@@ -1,5 +1,7 @@
 # ⏳ MeFalta ⏳
 
+<img width="1062" height="1774" alt="mefalta" src="https://github.com/user-attachments/assets/278635b6-f09f-4348-9c21-36c8e47b19c1" />
+
 **MeFalta** es una aplicación web que diseñé para calcular el tiempo que me falta para terminar un curso que estoy haciendo. A diferencia de los contadores tradicionales, MeFalta tiene en cuenta solo las horas del curso reales, excluyendo fines de semana, festivos y días libres personalizados. Por día cuenta 5 horas.
 
 ## Características principales
