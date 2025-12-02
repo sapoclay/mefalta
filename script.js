@@ -511,7 +511,19 @@ function renderizarCalendario() {
                 // Marcar días pasados
                 const hoy = new Date();
                 hoy.setHours(0, 0, 0, 0);
+                const horaActual = new Date().getHours();
+
+                // Determinar si el día es pasado
+                let esDiaPasado = false;
                 if (fechaNormalizada < hoy) {
+                    // Día completamente en el pasado
+                    esDiaPasado = true;
+                } else if (fechaNormalizada.getTime() === hoy.getTime() && horaActual >= 14) {
+                    // Día actual pero ya pasaron las 14:00
+                    esDiaPasado = true;
+                }
+
+                if (esDiaPasado) {
                     elementoDia.classList.add('dia-pasado');
                 }
 
@@ -539,11 +551,17 @@ function renderizarCalendario() {
                     elementoDia.title = '📍 Día final - ' + elementoDia.title;
                 }
 
-                // Añadir evento click para cambiar tipo de día
-                elementoDia.style.cursor = 'pointer';
-                elementoDia.addEventListener('click', () => {
-                    cambiarTipoDia(claveFecha, fecha);
-                });
+                // Sobrescribir tooltip y deshabilitar click si es día pasado
+                if (esDiaPasado) {
+                    elementoDia.title = '🔒 Día pasado - No modificable';
+                    elementoDia.style.cursor = 'not-allowed';
+                } else {
+                    // Añadir evento click solo para días NO pasados
+                    elementoDia.style.cursor = 'pointer';
+                    elementoDia.addEventListener('click', () => {
+                        cambiarTipoDia(claveFecha, fecha);
+                    });
+                }
             }
 
             contenedorDias.appendChild(elementoDia);
