@@ -1,5 +1,5 @@
 :root {
-    /* Paleta de Colores */
+    /* paleta de colores */
     --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
@@ -46,7 +46,7 @@ body {
     position: relative;
 }
 
-/* Fondo de Estrellas Animadas */
+/* Fondo de estrellas casi animadas */
 .estrellas {
     position: fixed;
     top: 0;
@@ -138,14 +138,14 @@ body {
     margin-top: 0.5rem;
 }
 
-/* Contenido Principal */
+/* Contenido principal */
 .contenido-principal {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
 }
 
-/* Estilos de Tarjetas */
+/* Estilos de tarjetas */
 .tarjeta {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
@@ -183,7 +183,7 @@ body {
     line-height: 1.6;
 }
 
-/* Inputs de Fecha */
+/* Inputs de fecha */
 .inputs-fecha {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -301,7 +301,7 @@ body {
     font-size: 1.2em;
 }
 
-/* Visor del Reloj */
+/* Visor del reloj */
 .tarjeta-reloj {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
     border: 2px solid var(--glass-border);
@@ -408,7 +408,7 @@ body {
     background-clip: text;
 }
 
-/* Sección de Exclusión */
+/* Sección de exclusión */
 .grupo-input-exclusion {
     display: flex;
     gap: 1rem;
@@ -473,7 +473,7 @@ body {
     transform: scale(1.2);
 }
 
-/* Cuadrícula de Festivos */
+/* Cuadrícula de festivos */
 .cuadricula-festivos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -505,7 +505,7 @@ body {
     color: var(--text-secondary);
 }
 
-/* Estilos del Calendario */
+/* Estilos del calendario */
 .contenedor-calendario {
     margin-top: 2rem;
     padding-top: 2rem;
@@ -790,7 +790,7 @@ body {
     }
 }
 
-/* Diseño Responsivo */
+/* Diseño responsivo */
 @media (max-width: 768px) {
     .contenedor {
         padding: 1rem;
@@ -835,8 +835,9 @@ body {
     }
 }
 
-/* Pie de Página */
+/* Pie de página */
 .pie-pagina {
+
     text-align: center;
     margin-top: 3rem;
     padding: 1.5rem;
@@ -846,12 +847,15 @@ body {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     border-radius: 12px;
+
 }
 
 .autor {
+
     font-weight: 700;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
 }
