@@ -697,6 +697,11 @@ body {
     color: var(--text-muted);
 }
 
+.dia-calendario.dia-pasado {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
 /* Animaciones */
 @keyframes aparecerAbajo {
     from {

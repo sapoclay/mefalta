@@ -330,7 +330,8 @@ function actualizarContador() {
     const diasLaborablesTranscurridos = calcularDiasLaborables(fechaInicio, ahora);
     const horasLaborablesTranscurridas = diasLaborablesTranscurridos * 5;
 
-    // Calcular tiempo restante en horas laborables
+    // Calcular días y horas laborables restantes
+    const diasLaborablesRestantes = diasLaborablesTotales - diasLaborablesTranscurridos;
     const horasLaborablesRestantes = horasLaborablesTotales - horasLaborablesTranscurridas;
 
     if (horasLaborablesRestantes <= 0) {
@@ -343,14 +344,23 @@ function actualizarContador() {
     // Calcular tiempo adicional del día actual si es día laborable
     let segundosAdicionales = 0;
     if (!debeExcluirFecha(ahora)) {
-        // Calcular cuánto tiempo ha pasado del día actual
-        const inicioDia = new Date(ahora);
-        inicioDia.setHours(0, 0, 0, 0);
-        const segundosEnDia = (ahora - inicioDia) / 1000;
+        const horaActual = ahora.getHours();
+        const minutosActuales = ahora.getMinutes();
+        const segundosActuales = ahora.getSeconds();
 
-        // Calcular proporción del día (5 horas = 18000 segundos)
-        const segundosPorDiaLaborable = 5 * 60 * 60;
-        segundosAdicionales = Math.min(segundosEnDia, segundosPorDiaLaborable);
+        // Solo contar tiempo si estamos dentro del horario laboral (09:00 - 14:00)
+        if (horaActual >= 9 && horaActual < 14) {
+            // Calcular tiempo transcurrido desde las 09:00
+            const horasTranscurridas = horaActual - 9;
+            const minutosTranscurridos = minutosActuales;
+            const segundosTranscurridos = segundosActuales;
+
+            segundosAdicionales = (horasTranscurridas * 60 * 60) + (minutosTranscurridos * 60) + segundosTranscurridos;
+        } else if (horaActual >= 14) {
+            // Si ya pasaron las 14:00, contar las 5 horas completas del día
+            segundosAdicionales = 5 * 60 * 60;
+        }
+        // Si es antes de las 09:00, segundosAdicionales = 0 (no se ha trabajado aún)
     }
 
     // Convertir horas laborables restantes a segundos totales
@@ -365,9 +375,9 @@ function actualizarContador() {
     // Actualizar display
     mostrarTiempo(dias, horas, minutos, segundos);
 
-    // Actualizar información adicional
-    visorDiasLaborables.textContent = diasLaborablesTotales;
-    visorHorasTotales.textContent = horasLaborablesTotales.toFixed(1);
+    // Actualizar información adicional - mostrar RESTANTES en lugar de TOTALES
+    visorDiasLaborables.textContent = diasLaborablesRestantes;
+    visorHorasTotales.textContent = horasLaborablesRestantes.toFixed(1);
 }
 
 // Mostrar tiempo en el reloj
@@ -496,6 +506,13 @@ function renderizarCalendario() {
 
                 if (fechaSoloDia.getTime() === fechaSoloFin.getTime()) {
                     elementoDia.classList.add('dia-fin');
+                }
+
+                // Marcar días pasados
+                const hoy = new Date();
+                hoy.setHours(0, 0, 0, 0);
+                if (fechaNormalizada < hoy) {
+                    elementoDia.classList.add('dia-pasado');
                 }
 
                 // Establecer tooltip
